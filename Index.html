@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khusus Buat Kayla ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .falling-flower {
+            position: absolute;
+            top: -50px;
+            font-size: 20px;
+            z-index: 1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 450px;
+            width: 85%;
+            z-index: 10;
+            border: 2px solid white;
+            position: relative;
+        }
+
+        .carousel {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin: 0 auto 15px auto;
+            position: relative;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .carousel img.active { opacity: 1; }
+
+        .flower-decoration { position: absolute; font-size: 2.5rem; animation: sway 3s infinite; z-index: 11; }
+        @keyframes sway { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(15deg) scale(1.1); } }
+        .tl { top: -20px; left: -20px; } .tr { top: -20px; right: -20px; }
+
+        h1 { color: #ff4d6d; margin-bottom: 10px; font-size: 1.6rem; }
+        p { color: #4a4a4a; line-height: 1.5; font-size: 0.95rem; }
+
+        .buttons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; height: 45px; position: relative; }
+        button { padding: 10px 20px; font-size: 0.9rem; font-weight: bold; border: none; border-radius: 20px; cursor: pointer; }
+        #btn-yes { background-color: #ff4d6d; color: white; }
+        #btn-no { background-color: #adb5bd; color: white; position: absolute; right: 50px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div id="main-card" class="container">
+        <div class="flower-decoration tl">🌷</div>
+        <div class="flower-decoration tr">🌷</div>
+
+        <div class="carousel">
+            <img src="https://i.postimg.cc/kgdjFLYH/IMG-20260525-WA0151.jpg" class="active">
+            <img src="https://i.postimg.cc/kVXkXpJn/IMG-20260525-WA0150.jpg">
+            <img src="https://i.postimg.cc/ksPKfzrh/IMG-20260525-WA0149.jpg">
+            <img src="https://i.postimg.cc/Y7gXBXWk/IMG-20260525-WA0148.jpg">
+            <img src="https://i.postimg.cc/hRryQzP3/IMG-20260525-WA0147.jpg">
+            <img src="https://i.postimg.cc/p6NmZVRh/IMG-20260525-WA0145.jpg">
+            <img src="https://i.postimg.cc/jvq71v87/IMG-20260525-WA0141.jpg">
+            <img src="https://i.postimg.cc/LX3dXFz8/IMG-20260525-WA0142.jpg">
+            <img src="https://i.postimg.cc/7N1fPn7Q/IMG-20260525-WA0143.jpg">
+            <img src="https://i.postimg.cc/ns91Drn6/IMG-20260525-WA0144.jpg">
+        </div>
+
+        <h1>Hai Kayla...</h1>
+        <p>Aku nggak janji akan selalu jadi yang terbaik, tapi aku akan terus berusaha jadi seseorang yang bisa membuat kamu merasa dihargai, didengar, dan disayang. Karena buat aku, kamu adalah seseorang yang sangat berarti.</p>
+        <p><strong>Mau temenin aku terus selamanya? 🥺</strong></p>
+        
+        <div class="buttons">
+            <button id="btn-yes" onclick="terimaKasih()">Mau! ❤️</button>
+            <button id="btn-no" onmouseover="hindari()">Gak</button>
+        </div>
+    </div>
+
+    <div id="happy-card" class="container hidden">
+        <h1>I Love You, Kayla! 💖</h1>
+        <p>Makasih ya udah pilih mau! Aku sayang kamu. ✨</p>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        let currentImgIndex = 0;
+        function changeImage() {
+            images[currentImgIndex].classList.remove('active');
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+            images[currentImgIndex].classList.add('active');
+        }
+        setInterval(changeImage, 3000);
+
+        function createFallingFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('falling-flower');
+            flower.innerHTML = '🌷';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(flower);
+            setTimeout(() => { flower.remove(); }, 5000);
+        }
+        setInterval(createFallingFlower, 300);
+
+        function hindari() {
+            const btnNo = document.getElementById('btn-no');
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = Math.random() * (window.innerWidth - 80) + 'px';
+            btnNo.style.top = Math.random() * (window.innerHeight - 40) + 'px';
+        }
+
+        function terimaKasih() {
+            document.getElementById('main-card').classList.add('hidden');
+            document.getElementById('happy-card').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
